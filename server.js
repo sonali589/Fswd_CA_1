@@ -11,13 +11,13 @@ app.get('/signin',(req,res)=>{
 
     if(password){
         if(password.length > 8)
-            return res.send("Password length should be greater than 8 or less than 16")
+            return res.send("Password length should be greater than 8 or less than 16");
     }
 
     res.send("Signned in successfully.");
 
-    const port = 3000
-    res.listene(port,()=>{
-        console.log(`server running on http://localhost:${port}`);
+    const PORT = 3000;
+    app.listen(PORT,()=>{
+        console.log(`server running on http://localhost:${PORT}`);
     })
 });
