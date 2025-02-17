@@ -1,23 +1,25 @@
-const express = require("express");
-const app = express()
+const express = require('express');
+const app = express();
 
-app.get('/signin',(req,res)=>{
-    const {email,password} = req.query;
+app.get('/signin', (req, res) => {
+    const { password, email } = req.query;
 
-    if(email){
-        if(!email.includes('@') || !email.includes('.') || email.indexOf('@') || email.lastIndexOf('.'))
+    if (email) {
+        if (!email.includes('@') || !email.includes('.') || email.indexOf('@') > email.lastIndexOf('.')) {
             return res.send("Email cannot be empty");
+        }
     }
 
-    if(password){
-        if(password.length > 8)
-            return res.send("Password length should be greater than 8 or less than 16");
+    if (password) {
+        if (password.length < 8) {
+            return res.send("Password length should be greater than 8 or less than equal to 16");
+        }
     }
 
-    res.send("Signned in successfully.");
+    res.send("Signin successful!");
+});
 
-    const PORT = 3000;
-    app.listen(PORT,()=>{
-        console.log(`server running on http://localhost:${PORT}`);
-    })
+const PORT = 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running live on http://localhost:${PORT}`);
 });
