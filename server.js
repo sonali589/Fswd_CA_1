@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 
-app.get('/signin', (req, res) => {
+app.get('/signup', (req, res) => {
     const { password, email } = req.query;
 
     if (email) {
@@ -16,7 +16,7 @@ app.get('/signin', (req, res) => {
         }
     }
 
-    res.send("Signin successful!");
+    res.send("Signup successful!");
 });
 
 const PORT = 3000;
